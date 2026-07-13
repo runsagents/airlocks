@@ -1,0 +1,4 @@
+# SYNTHETIC EVIDENCE — no real deployment occurred.
+2026-07-14T09:30:00.000Z INFO uploading build 2026.07.14+2
+2026-07-14T09:30:01.000Z ERROR deployment failed: success callback never received
+{"kind":"deploy-result","build":"2026.07.14+2","exitStatus":1,"status":"failed"}
