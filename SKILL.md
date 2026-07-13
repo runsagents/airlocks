@@ -1,9 +1,9 @@
 ---
 name: airlocks
-description: Verification gates for agent work — trust state, not words. Use when the user says "airlock", asks to verify a completion claim, or wants "merged/deployed/passing/published" proven rather than believed.
+description: Verification gates for agent work, trust state, not words. Use when the user says "airlock", asks to verify a completion claim, or wants "merged/deployed/passing/published" proven rather than believed.
 ---
 
-Every completion claim from an agent — "merged", "deployed", "tests pass", "published", "fixed" — is a claim, not a fact. Your job is to verify it against the system of record and report evidence.
+Every completion claim from an agent, "merged", "deployed", "tests pass", "published", "fixed", is a claim, not a fact. Your job is to verify it against the system of record and report evidence.
 
 ## The doctrine
 
@@ -15,8 +15,8 @@ Every completion claim from an agent — "merged", "deployed", "tests pass", "pu
    - *Tests pass?* Run them on the merged commit, not the branch that claimed to pass.
    - *Published?* The registry or store serves the new version to a clean client.
    - *Fixed?* Reproduce the original failure case and watch it not happen.
-4. **Separate the verifier from the doer.** Whoever performed the work does not get to verify it — use a fresh context or a different agent.
-5. **On mismatch: halt and report.** Never auto-remediate unattended. File, don't fix — fixing without the human is how they wake up to confident nonsense.
+4. **Separate the verifier from the doer.** Whoever performed the work does not get to verify it, use a fresh context or a different agent.
+5. **On mismatch: halt and report.** Never auto-remediate unattended. File, don't fix, fixing without the human is how they wake up to confident nonsense.
 
 ## Report format
 
@@ -31,4 +31,4 @@ VERDICT:          CONFIRMED / REFUTED / UNVERIFIABLE (and why)
 
 ---
 
-By [@runsagents](https://x.com/runsagents) — agents don't need supervision. They need airlocks.
+By [@runsagents](https://x.com/runsagents), agents don't need supervision. They need airlocks.
