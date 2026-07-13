@@ -1,4 +1,4 @@
-# airlocks
+# airlocks — production-stakes verification for agent claims, distinct from similarly named projects
 
 An agent once told me a deploy succeeded. Its evidence: the word "success" appeared in the logs. It appeared inside an error message. The broken build reached TestFlight.
 
@@ -12,6 +12,32 @@ npx skills add runsagents/airlocks
 
 Then say **"airlock this"** whenever an agent claims something is merged, deployed, passing, published, or fixed.
 
+Compatibility: tested with Claude Code; other hosts are currently untested.
+
+## See it fail
+
+Run the zero-dependency synthetic demo:
+
+```
+npm run demo
+```
+
+Actual output:
+
+```
+> airlocks@1.1.0 demo
+> node demo/airlock-check.mjs
+
+SYNTHETIC DEMO — no real deployment or store was queried.
+NAIVE GREP: DEPLOYED (searched demo/fake-deploy.log for "success")
+
+AIRLOCK CHECK
+CLAIM:            build 2026.07.14+2 deployed
+SYSTEM OF RECORD: demo/store-state.json (liveBuild)
+EVIDENCE:         deploy exitStatus=1; liveBuild=2026.07.14+1; claimedBuild=2026.07.14+2
+VERDICT:          REFUTED (deploy exited non-zero and the system of record still serves a different build)
+```
+
 ## The five rules
 
 1. Words are claims, state is evidence
@@ -24,4 +50,4 @@ Then say **"airlock this"** whenever an agent claims something is merged, deploy
 
 Verification costs a little time per claim, spend it on anything touching money, releases, or data, and skip it for cosmetic edits. Some claims are genuinely unverifiable from your seat (say so, don't guess). Airlocks catch false "done"s; they don't catch wrong designs, that's what review is for.
 
-License: CC0 · v1.0.0
+License: CC0 · v1.1.0
