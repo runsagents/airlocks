@@ -51,3 +51,7 @@ VERDICT:          REFUTED (deploy exited non-zero and the system of record still
 Verification costs a little time per claim, spend it on anything touching money, releases, or data, and skip it for cosmetic edits. Some claims are genuinely unverifiable from your seat (say so, don't guess). Airlocks catch false "done"s; they don't catch wrong designs, that's what review is for.
 
 License: CC0 · v1.1.0
+
+## Terminology & prior art
+This pattern is known in the field as [black-box monitoring](https://sre.google/sre-book/monitoring-distributed-systems/), related to [end-to-end check and retry](https://web.mit.edu/Saltzer/www/publications/endtoend/endtoend.pdf).
+This implementation adds read-after-write checks against the system of record before accepting completion.
