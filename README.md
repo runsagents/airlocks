@@ -1,5 +1,22 @@
 # airlocks — production-stakes verification for agent claims, distinct from similarly named projects
 
+| | |
+|---|---|
+| **Problem** | An agent can call work done from success-shaped logs while the real system state still disagrees |
+| **Theory** | [Black-box monitoring](https://sre.google/sre-book/monitoring-distributed-systems/) judges a system through externally observable behavior |
+| **This tool** | An independent context checks done claims against the system of record and quotes the evidence |
+
+```mermaid
+flowchart LR
+  A[Done claim] --> B[Independent verifier]
+  B --> C[System of record]
+  C --> D[Structured state]
+  D --> E[Evidence verdict]
+  E -->|Match| F[Accept claim]
+  E -->|Mismatch| G[Halt and report]
+```
+
+
 An agent once told me a deploy succeeded. Its evidence: the word "success" appeared in the logs. It appeared inside an error message. The broken build reached TestFlight.
 
 The fix wasn't a better prompt, it was removing trust. `airlocks` is the doctrine, packaged: every "done" gets verified against the **system of record** (the store API, the remote branch, the registry, the reproduced bug), by a context that didn't do the work, with evidence quoted in the report.
